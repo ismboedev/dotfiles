@@ -1,0 +1,132 @@
+#! /bin/sh
+#
+# Example panel for lemonbar
+
+. panel_colors
+
+num_mon=$(bspc query -M | wc -l)
+
+while read -r line ; do
+	case $line in
+		S*)
+			# clock output
+			sys="%{F$COLOR_SYS_FG}%{B$COLOR_SYS_BG}| ${line#?} %{B-}%{F-}"
+			sys="%{A:gsimplecal:}$sys%{A}"
+			;;
+		D*)
+			wifi="%{A:nm-connection-editor:}${line#?}%{A}"
+			;;
+		B*)
+			case ${line#?} in
+				[1])
+					bstat=""
+					bstat="%{A:batnotify:}$bstat%{A}"
+			esac
+			;;
+
+		b*)
+
+			if ((0 <= ${line#?} && ${line#?}<= 9))
+			then
+				bstat=""
+				bstat="%{F#ff0010}%{B$COLOR_SYS_BG}$bstat %{B-}%F-}"
+				bstat="%{A:batnotify:}$bstat%{A}"
+			elif ((10 <= ${line#?} && ${line#?}<= 24))
+			then
+				bstat=""
+				bstat="%{A:batnotify:}$bstat%{A}"
+			elif ((25 <= ${line#?} && ${line#?}<= 49))
+			then
+				bstat=""
+				bstat="%{A:batnotify:}$bstat%{A}"
+			elif ((50 <= ${line#?} && ${line#?}<= 74))
+			then
+				bstat=""
+				bstat="%{A:batnotify:}$bstat%{A}"
+			elif ((75 <= ${line#?} && ${line#?}<= 90))
+			then
+				bstat=""
+				bstat="%{A:batnotify:}$bstat%{A}"
+			elif ((91 <= ${line#?} && ${line#?}<= 100))
+			then
+				bstat=""
+				bstat="%{A:batnotify:}$bstat%{A}"
+			fi
+			bperc="%{F$COLOR_SYS_FG}%{B$COLOR_SYS_BG} ${line#?}% %{B-}%{F-}"
+			bperc="%{A:batnotify:}$bperc%{A}"
+			;;
+		T*)
+			# xtitle output
+			title="%{F$COLOR_TITLE_FG}%{B$COLOR_TITLE_BG} ${line#?} %{B-}%{F-}"
+			;;
+		W*)
+			# bspwm's state
+			wm=""
+			IFS=':'
+			set -- ${line#?}
+			while [ $# -gt 0 ] ; do
+				item=$1
+				name=${item#?}
+				case $item in
+					[mM]*)
+						[ $num_mon -lt 2 ] && shift && continue
+						case $item in
+							m*)
+								# monitor
+								FG=$COLOR_MONITOR_FG
+								BG=$COLOR_MONITOR_BG
+								;;
+							M*)
+								# focused monitor
+								FG=$COLOR_FOCUSED_MONITOR_FG
+								BG=$COLOR_FOCUSED_MONITOR_BG
+								;;
+						esac
+						wm="${wm}%{F${FG}}%{B${BG}}%{A:bspc monitor -f ${name}:} ${name} %{A}%{B-}%{F-}"
+						;;
+					[fFoOuU]*)
+						case $item in
+							f*)
+								# free desktop
+								FG=$COLOR_FREE_FG
+								BG=$COLOR_FREE_BG
+								;;
+							F*)
+								# focused free desktop
+								FG=$COLOR_FOCUSED_FREE_FG
+								BG=$COLOR_FOCUSED_FREE_BG
+								;;
+							o*)
+								# occupied desktop
+								FG=$COLOR_OCCUPIED_FG
+								BG=$COLOR_OCCUPIED_BG
+								;;
+							O*)
+								# focused occupied desktop
+								FG=$COLOR_FOCUSED_OCCUPIED_FG
+								BG=$COLOR_FOCUSED_OCCUPIED_BG
+								;;
+							u*)
+								# urgent desktop
+								FG=$COLOR_URGENT_FG
+								BG=$COLOR_URGENT_BG
+								;;
+							U*)
+								# focused urgent desktop
+								FG=$COLOR_FOCUSED_URGENT_FG
+								BG=$COLOR_FOCUSED_URGENT_BG
+								;;
+						esac
+						wm="${wm}%{F${FG}}%{B${BG}}%{A:bspc desktop -f ${name}:} ${name} %{A}%{B-}%{F-}"
+						;;
+					[LTG]*)
+						# layout, state and flags
+						wm="${wm}%{F$COLOR_STATE_FG}%{B$COLOR_STATE_BG} ${name} %{B-}%{F-}"
+						;;
+				esac
+				shift
+			done
+			;;
+	esac
+	printf "%s\n" "%{l}${wm}%{c}${title}%{r}${bstat}${bperc}${sys}"
+done

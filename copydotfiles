@@ -1,0 +1,52 @@
+#!/bin/zsh
+
+# zsh config
+rsync -aAXv /home/ismboe/.zshrc /home/ismboe/Dokumente/dotfiles/
+
+# zsh profile
+rsync -aAXv /home/ismboe/.zprofile /home/ismboe/Dokumente/dotfiles/
+
+# vim config
+rsync -aAXv /home/ismboe/.vimrc /home/ismboe/Dokumente/dotfiles/
+
+# feh background set
+rsync -aAXv /home/ismboe/.fehbg /home/ismboe/Dokumente/dotfiles/
+
+# x server
+rsync -aAXv /home/ismboe/.xinitrc /home/ismboe/Dokumente/dotfiles/
+rsync -aAXv /home/ismboe/.Xresources /home/ismboe/Dokumente/dotfiles/
+
+# grub
+rsync -aAXv /etc/default/grub /home/ismboe/Dokumente/dotfiles/
+
+# scripts
+rsync -aAXv /home/ismboe/scripts /home/ismboe/Dokumente/dotfiles/
+
+# bspwm + lemonbar panel
+rsync -aAXv /home/ismboe/.config/bspwm /home/ismboe/Dokumente/dotfiles/.config/
+
+# sxhkd
+rsync -aAXv /home/ismboe/.config/sxhkd /home/ismboe/Dokumente/dotfiles/.config/
+
+# dunst notifications
+rsync -aAXv /home/ismboe/.config/dunst /home/ismboe/Dokumente/dotfiles/.config/
+
+# gsimplecal
+rsync -aAXv /home/ismboe/.config/gsimplecal /home/ismboe/Dokumente/dotfiles/.config/
+
+# termite
+rsync -aAXv /home/ismboe/.config/termite /home/ismboe/Dokumente/dotfiles/.config/
+
+# compton
+rsync -aAXv /home/ismboe/.config/compton.conf /home/ismboe/Dokumente/dotfiles/.config/
+
+
+# packages
+echo "$(date)\n" > /home/ismboe/Dokumente/dotfiles/packages.dat
+pacman -Qni >> /home/ismboe/Dokumente/dotfiles/packages.dat
+
+echo "$(date)\n" > /home/ismboe/Dokumente/dotfiles/packagesINOF.dat
+pacman -Qmi >> /home/ismboe/Dokumente/dotfiles/packagesINOF.dat
+
+echo "$(date)\n" > /home/ismboe/Dokumente/dotfiles/packagesCompact.dat
+pacman -Q >> /home/ismboe/Dokumente/dotfiles/packagesCompact.dat

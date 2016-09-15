@@ -1,0 +1,5 @@
+[options]
+clickable_url = true
+font = Hack 10
+
+background = rgba(0, 0, 0, 0.5)
