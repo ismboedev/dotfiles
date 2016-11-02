@@ -1,0 +1,27 @@
+#!/bin/zsh
+
+ZEILEN=$( (echo "shutdown"; echo "reboot"; echo "suspend"; echo "hibernate"; echo "hybrid-sleep"; echo "lock") | rofi -dmenu -p "POWERMENU" )
+
+if [ x"shutdown" = x"${ZEILEN}" ]
+then
+	systemctl poweroff
+elif [ x"reboot" = x"${ZEILEN}" ]
+then
+	systemctl reboot
+elif [ x"suspend" = x"${ZEILEN}" ]
+then
+	lock
+	systemctl suspend
+elif [ x"hibernate" = x"${ZEILEN}" ]
+then
+	lock
+	systemctl hibernate
+elif [ x"hybrid-sleep" = x"${ZEILEN}" ]
+then
+	lock
+	systemctl hybrid-sleep
+elif [ x"lock" = x"${ZEILEN}" ]
+then
+	sleep 0.15
+	lock
+fi

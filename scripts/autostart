@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+sleep 1
+lxpolkit &
+nm-applet &
+insync start &
+archinfo &
+#Telegram &

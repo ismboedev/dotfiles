@@ -1,1 +1,4 @@
-trayer --edge top --align right --widthtype request --heighttype pixel --height 18 --distancefrom right --distance 200
+#!/bin/zsh
+sleep 1s
+# for Hack font in panel: distance = 330, cantarell 280
+trayer --edge top --align right --widthtype request --heighttype pixel --height 18 --distancefrom right --distance 330

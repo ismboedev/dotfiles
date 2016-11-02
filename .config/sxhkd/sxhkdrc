@@ -18,8 +18,12 @@ alt + Tab
 super + Escape
 	pkill -USR1 -x sxhkd
 
+# powermenu with rofi in dmenu mode
+super + F4
+	powermenu
 
-################ MY CONFIG ####################
+
+################ volume CONFIG ####################
 # volume
 XF86AudioMute
 	amixer -q set Master toggle

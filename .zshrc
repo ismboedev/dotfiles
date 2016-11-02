@@ -37,7 +37,9 @@ alias free='free -m'
 
 alias more=less
 
-alias ls='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" -F'
+alias ls='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" -F --color=auto'
+
+alias mycpufreq='sudo cpupower frequency-set -u'
 
 
 #export TERM="xterm-256color"

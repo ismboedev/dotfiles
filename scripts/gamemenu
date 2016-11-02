@@ -1,0 +1,40 @@
+#!/bin/zsh
+
+01="Devil Daggers"
+02="The Ultimate DOOM"
+03="SimCity 2000 Special Edition"
+04="Banished"
+05="Anno 1503 AD"
+
+
+
+ZEILEN=$( (echo $01; echo $02; echo $03; echo $04; echo $05 ) | rofi -dmenu -p "GAME MENU" )
+
+
+
+
+if [ x"Devil Daggers" = x"${ZEILEN}" ]
+then
+	ps x | grep steam | grep -vq grep
+	if [ $? -eq 0 ];then
+		DevilDaggers
+	else
+		notify-send --urgency=critical 'Devil Daggers' 'Steam has to be running'
+	fi
+
+elif [ x"SimCity 2000 Special Edition" = x"${ZEILEN}" ]
+then
+	SimCity2000SpecialEdition
+
+elif [ x"Banished" = x"${ZEILEN}" ]
+then
+	Banished
+
+elif [ x"Anno 1503 AD" = x"${ZEILEN}" ]
+then
+	Anno1503AD
+
+elif [ x"The Ultimate DOOM" = x"${ZEILEN}" ]
+then
+	TheUltimateDOOM
+fi

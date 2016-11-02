@@ -1,11 +1,15 @@
 #! /bin/sh
 
-sxhkd &
-compton -cb &
-#panel &
 
-bspc config presel_feedback_color "#1793D1"
+# set keyboard for x
+exec setxkbmap -layout de &
 
+
+# preselection color
+bspc config presel_feedback_color "#1794D1" # arch logo color
+
+
+# bspwm conffigs
 bspc config top_padding 	15
 bspc config border_width         2
 bspc config window_gap          12
@@ -15,6 +19,7 @@ bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 bspc config focus_by_distance    true
 bspc config history_aware_focus  true
+bspc config click_to_focus 	 true
 
 ws1=
 ws2=
@@ -28,25 +33,29 @@ ws9=
 ws10=
 
 bspc monitor -d $ws1 $ws2 $ws3 $ws4 $ws5 $ws6 $ws7 $ws8 $ws9 $ws10
-#bspc monitor -d I "\uf268" III IV V VI VII VIII IX 10
 
-bspc rule -a Gimp desktop=^8 state=floating follow=on
-bspc rule -a google-chrome desktop=^2
+
+# rules
+bspc rule -a Gimp state=floating follow=on
+bspc rule -a Pavucontrol state=floating follow=on
+bscp rule -a Lxappearance state=floating
+bspc rule -a Google-chrome desktop=^2
+bspc rule -a Steam desktop=^9
+bspc rule -a Wine desktop=^9
 bspc rule -a MPlayer state=floating
-bspc rule -a Kupfer.py focus=on
-bspc rule -a Screenkey manage=off
-bspc rule -a Echtest state=floating
-bspc rule -a Vlc2 state=floating follow=on
-bspc rule -a Telegram desktop=^8 state=floating
+bspc rule -a Vlc state=floating follow=on
+bspc rule -a TelegramDesktop desktop=^8 state=floating
 bspc rule -a VirtualBox desktop=^7
-bspc rule -a VirtualBox -o state=floating
 
 
-Telegram &
+# applications and services to start
+setbg &
+compton -cb &
 panel &
 dunst &
 tray &
-nm-applet &
-insync start &
-
-exec setxkbmap -layout de
+autostart &
+#sleep 1s &&
+#nm-applet &
+#insync start &
+#Telegram &

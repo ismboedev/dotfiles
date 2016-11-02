@@ -1,0 +1,7 @@
+#!/bin/bash
+
+used="$(df -h | grep sda3 | awk '{print $3}')"
+from="$(df -h | grep sda3 | awk '{print $2}')"
+left="$(df -h | grep sda3 | awk '{print $4}')"
+
+notify-send '  ' " $used  /  $from \n $left free "

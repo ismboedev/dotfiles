@@ -5,57 +5,109 @@
 . panel_colors
 
 num_mon=$(bspc query -M | wc -l)
+s="%{F$COLOR_SYS_FG}%{B$COLOR_SYS_BG} | %{B-}%{F-}"
 
 while read -r line ; do
 	case $line in
 		S*)
 			# clock output
-			sys="%{F$COLOR_SYS_FG}%{B$COLOR_SYS_BG}| ${line#?} %{B-}%{F-}"
+			sys="%{F$COLOR_SYS_FG}%{B$COLOR_SYS_BG}${line#?}%{B-}%{F-}"
 			sys="%{A:gsimplecal:}$sys%{A}"
 			;;
+		#K*)
+		#	kernel="%{F$COLOR_SYS_FG}%{B$COLOR_SYS_BG} ${line#?}%{B-}%{F-}"
+		#	;;
 		D*)
-			wifi="%{A:nm-connection-editor:}${line#?}%{A}"
+			dis="%{F$COLOR_SYS_FG}%{B$COLOR_SYS_BG}${line#?}%{B-}%{F-}"
+			;;
+		M*)
+			if [ "${line#?}" = "on" ]
+			then
+				volstat=1
+			else
+				volicon="%{F$COLOR_SYS_FG}%{B$COLOR_SYS_BG}%{B-}%{F-}"
+				volstat=0
+			fi
+			;;
+		V*)
+			if [ "$volstat" = "1" ]
+			then
+				if ((0 <= ${line#?} && ${line#?} <= 40))
+				then
+					volicon="%{F$COLOR_SYS_FG}%{B$COLOR_SYS_BG}%{B-}%{F-}"
+				elif ((41 <= ${line#?}))
+				then
+					volicon="%{F$COLOR_SYS_FG}%{B$COLOR_SYS_BG}%{B-}%{F-}"
+				fi
+			fi
+			vollev="%{F$COLOR_SYS_FG}%{B$COLOR_SYS_BG}${line#?}%{B-}%{F-}"
+			;;
+		C*)
+			cpu="%{F$COLOR_SYS_FG}%{B$COLOR_SYS_BG}${line#?}%{B-}%{F-}"
+			cpu="%{A:cpunotify & ramnotify & hddnotify:}$cpu%{A}"
+			;;
+		T*)
+			if [ "${line#?}" -gt "75" ]
+			then
+				temp="%{F#ff0010}%{B$COLOR_SYS_BG} ${line#?}°C%{B-}%{F-}"
+			else
+				temp=""
+			fi
 			;;
 		B*)
 			case ${line#?} in
+				[0])
+					#bicon=""
+					bstat=0
+					;;
 				[1])
-					bstat=""
-					bstat="%{A:batnotify:}$bstat%{A}"
+					bicon="%{F$COLOR_SYS_FG}%{B$COLOR_SYS_BG}%{B-}%{F-}"
+					bstat=1
+					bicon="%{A:batnotify:}$bicon%{A}"
+					;;
 			esac
 			;;
 
 		b*)
 
-			if ((0 <= ${line#?} && ${line#?}<= 9))
+			if [ "$bstat" = "0" ] 
 			then
-				bstat=""
-				bstat="%{F#ff0010}%{B$COLOR_SYS_BG}$bstat %{B-}%F-}"
-				bstat="%{A:batnotify:}$bstat%{A}"
-			elif ((10 <= ${line#?} && ${line#?}<= 24))
-			then
-				bstat=""
-				bstat="%{A:batnotify:}$bstat%{A}"
-			elif ((25 <= ${line#?} && ${line#?}<= 49))
-			then
-				bstat=""
-				bstat="%{A:batnotify:}$bstat%{A}"
-			elif ((50 <= ${line#?} && ${line#?}<= 74))
-			then
-				bstat=""
-				bstat="%{A:batnotify:}$bstat%{A}"
-			elif ((75 <= ${line#?} && ${line#?}<= 90))
-			then
-				bstat=""
-				bstat="%{A:batnotify:}$bstat%{A}"
-			elif ((91 <= ${line#?} && ${line#?}<= 100))
-			then
-				bstat=""
-				bstat="%{A:batnotify:}$bstat%{A}"
+				if ((0 <= ${line#?} && ${line#?}<= 9))
+				then
+					bicon=""
+					bicon="%{F#ff0010}%{B$COLOR_SYS_BG}$bicon%{B-}%F-}"
+					bicon="%{A:batnotify:}$bicon%{A}"
+				elif ((10 <= ${line#?} && ${line#?}<= 24))
+				then
+					bicon=""
+					bicon="%{A:batnotify:}$bicon%{A}"
+				elif ((25 <= ${line#?} && ${line#?}<= 49))
+				then
+					bicon=""
+					bicon="%{A:batnotify:}$bicon%{A}"
+				elif ((50 <= ${line#?} && ${line#?}<= 74))
+				then
+					bicon=""
+					bicon="%{A:batnotify:}$bicon%{A}"
+				elif ((75 <= ${line#?} && ${line#?}<= 90))
+				then
+					bicon=""
+					bicon="%{A:batnotify:}$bicon%{A}"
+				elif ((91 <= ${line#?} && ${line#?}<= 100))
+				then
+					bicon=""
+					bicon="%{A:batnotify:}$bicon%{A}"
+				fi
 			fi
-			bperc="%{F$COLOR_SYS_FG}%{B$COLOR_SYS_BG} ${line#?}% %{B-}%{F-}"
-			bperc="%{A:batnotify:}$bperc%{A}"
+			if [ -f "/sys/class/power_supply/BAT0/present" ]
+			then
+				bperc="%{F$COLOR_SYS_FG}%{B$COLOR_SYS_BG}${line#?}%%{B-}%{F-}"
+				bperc="%{A:batnotify:}$bperc%{A}"
+			else
+				bperc=""
+			fi
 			;;
-		T*)
+		X*)
 			# xtitle output
 			title="%{F$COLOR_TITLE_FG}%{B$COLOR_TITLE_BG} ${line#?} %{B-}%{F-}"
 			;;
@@ -128,5 +180,6 @@ while read -r line ; do
 			done
 			;;
 	esac
-	printf "%s\n" "%{l}${wm}%{c}${title}%{r}${bstat}${bperc}${sys}"
+	printf "%s\n" "%{l}${wm}%{c}${title}%{r}${cpu}${temp}${s}${volicon}${vollev}\
+		${s}${dis}${s}${bicon}${bperc}${s}${sys}"
 done

@@ -1,0 +1,2 @@
+cd /home/ismboe/.local/share/Steam/steamapps/common/devildaggers
+LD_PRELOAD=libcurl.so.3 ./devildaggers

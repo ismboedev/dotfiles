@@ -1,0 +1,6 @@
+#!/bin/bash
+
+used="$(free -h | grep Speicher | awk '{print $3}')"
+from="$(free -h | grep Speicher | awk '{print $2}')"
+
+notify-send 'RAM' " $used  /  $from "

@@ -10,16 +10,28 @@ trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 [ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
 mkfifo "$PANEL_FIFO"
 
-PANEL_FONT1="Hack-10"
-PANEL_FONT2="FontAwesome-10"
+#PANEL_FONT1="Hack-10"
+PANEL_FONT1="Source Sans Pro Semibold-10"
+PANEL_FONT2="FontAwesome-11"
 
 bspc config top_padding $PANEL_HEIGHT
 bspc subscribe report > "$PANEL_FIFO" &
-xtitle -sf 'T%s' > "$PANEL_FIFO" &
-clock -sf 'S%H:%M.%S' -i 1 > "$PANEL_FIFO" &
-echo "Dwifi" > "$PANEL_FIFO" &
-mysysinfo -%B -B -l5 > "$PANEL_FIFO" &
-mysysinfo -%b -b -l55 > "$PANEL_FIFO" &
+xtitle -sf 'X%s' > "$PANEL_FIFO" & # window title
+clock -sf 'S%H:%M.%S' -i 1 > "$PANEL_FIFO" & # clock
+mysysinfo -%C  -C -l5 > "$PANEL_FIFO" & # cpu usage
+mysysinfo -%T  -T -l5 > "$PANEL_FIFO" & # temperature
+mysysinfo -%B -B -l5 > "$PANEL_FIFO" & # ac adapter
+mysysinfo -%b -b -l5 > "$PANEL_FIFO" & # battery percent
+#echo "K$(uname -r)" > "$PANEL_FIFO" & # kernel
+
+while true; do
+	vol=$(amixer get Master | awk 'END{gsub(/\[|\]|%/,""); print $5}')
+	volstat=$(amixer get Master | awk 'END{gsub(/\[|\]|%/,""); print $6}')
+	echo "V${vol}" > "$PANEL_FIFO" &
+	echo "M${volstat}" > "$PANEL_FIFO" &
+	echo "D$(cat /sys/class/backlight/acpi_video0/actual_brightness)" > "$PANEL_FIFO" &
+	sleep 0.25
+done &
 
 
 . panel_colors

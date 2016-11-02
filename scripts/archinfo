@@ -1,0 +1,15 @@
+#!/bin/zsh
+
+# waiting for internet connection etc
+sleep 3
+
+bspc rule -a Termite -o desktop= &&
+	termite --exec=archaur &
+
+sleep 0.5 &&
+
+bspc rule -a Termite -o desktop= &&
+	termite --exec=archupdates &
+
+bspc rule -a qutebrowser -o desktop= &
+archnews

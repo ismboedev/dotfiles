@@ -1,0 +1,1 @@
+LD_PRELOAD=/usr/lib32/libudev.so.1 STEAM_RUNTIME=0 steam

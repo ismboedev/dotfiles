@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+#bspc rule -a qutebrowser -o desktop=
+qutebrowser https://www.archlinux.org
