@@ -1,0 +1,8 @@
+#!/bin/bash
+
+gap="$(bspc config -d focused window_gap)"
+
+
+#notify-send --urgency=low --hint=string:gap:gap 'window_gap' "$gap"
+
+dunstify --urgency=low --replace=9001 'window_gap' "$gap"

@@ -1,5 +1,5 @@
 [global]
-    font = Cantarell 9
+    font = Hack 9
     
     # Allow a small subset of html markup:
     #   <b>bold</b>
@@ -179,13 +179,13 @@
     background = "#272822"
     foreground = "#B7C892"
     #foreground = "#e6e6e6"
-    timeout = 5
+    timeout = 1
 
 [urgency_normal]
     background = "#272822"
     foreground = "#B7C892"
     #foreground = "#ffffff"
-    timeout = 15
+    timeout = 5
 
 [urgency_critical]
     background = "#272822"

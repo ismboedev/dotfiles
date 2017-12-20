@@ -22,8 +22,11 @@ rsync -aAXv /etc/default/grub /home/ismboe/Dokumente/dotfiles/
 # scripts
 rsync -aAXv /home/ismboe/scripts /home/ismboe/Dokumente/dotfiles/
 
-# bspwm + lemonbar panel
+# bspwm
 rsync -aAXv /home/ismboe/.config/bspwm /home/ismboe/Dokumente/dotfiles/.config/
+
+# polybar panel
+rsync -aAXv /home/ismboe/.config/polybar /home/ismboe/Dokumente/dotfiles/.config/
 
 # sxhkd
 rsync -aAXv /home/ismboe/.config/sxhkd /home/ismboe/Dokumente/dotfiles/.config/

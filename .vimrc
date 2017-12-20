@@ -10,7 +10,9 @@ Plug 'Townk/vim-autoclose'
 "Plug 'klen/python-mode'
 Plug 'ervandew/supertab'
 Plug 'Rip-Rip/clang_complete' 
-"Plug 'vim-scripts/taglist.vim'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'OmniCppComplete'
+Plug 'vim-scripts/taglist.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 "Plug 'ivalkeen/nerdtree-execute'
@@ -39,7 +41,8 @@ let g:tex_flavor='latex'
 " dont hide math Dollar signs...
 let g:tex_conceal='ag'
 
-let g:Tex_CompileRule_pdf = 'pdflatex --synctex=1 -interactions=nonstopmode $*'
+"let g:Tex_CompileRule_pdf = 'pdflatex --synctex=1 -interactions=nonstopmode $*'
+let g:Tex_CompileRule_pdf = 'pdflatex -interactions=nonstopmode $*'
 let g:Tex_DefaultTargetFormat = 'pdf'
 let g:Tex_MultipleCompileFormats='pdf'
 let g:Tex_ViewRule_pdf = 'zathura'
@@ -69,6 +72,11 @@ autocmd BufNewFile,BufRead *.tex imap <F2> <ESC>:w<Return><leader>ll<leader>ls
 
 
 let g:clang_user_options="-std=c++11"
+
+" vim cpp enhanced highlight
+let g:cpp_class_scope_highlight = 1
+let g:cpp_experimental_template_highlight = 1
+let g:cpp_concepts_highlight = 1
 
 
 

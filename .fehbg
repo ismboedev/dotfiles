@@ -1,2 +1,2 @@
 #!/bin/sh
-feh  --bg-fill '/home/ismboe/Bilder/Wall/bbNabuc.jpg' 
+'feh' '--bg-fill' '/home/ismboe/Bilder/Wall/archWall03_smaller.png' 

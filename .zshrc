@@ -1,7 +1,7 @@
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=2000
-SAVEHIST=2000
+HISTSIZE=5000
+SAVEHIST=5000
 setopt appendhistory autocd extendedglob nomatch notify
 bindkey -e
 # End of lines configured by zsh-newuser-install
@@ -32,14 +32,28 @@ alias cp="cp -i"
 # human-readable sizes
 alias df='df -h'
 
+# show grep colors
+alias grep='grep --color=auto'
+
 # show sizes in MB
 alias free='free -m'
+
+# change to master theseis directory
+alias master='cd /home/ismboe/Google\ Drive/Physik/MasterArbeit && exa -la --git'
 
 alias more=less
 
 alias ls='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" -F --color=auto'
 
+alias meinmerge='gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=finished.pdf'
+
 alias mycpufreq='sudo cpupower frequency-set -u'
+
+alias vpnRUB='sudo openvpn /etc/openvpn/client/OpenVPN-RUB.ovpn'
+
+alias alert='notify-send 'ALERT' "$(date +%F%n%T)" -u critical & cvlc /home/ismboe/Musik/02_E1M1.flac'
+
+alias ipinfo='curl ipinfo.io'
 
 
 #export TERM="xterm-256color"

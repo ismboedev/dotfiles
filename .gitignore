@@ -2,3 +2,4 @@ packages.dat
 packagesINOF.dat
 packagesCompact.dat
 grub
+*.swp

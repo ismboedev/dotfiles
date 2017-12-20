@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+cd /home/ismboe/Dokumente/dev/tempserv
+./sendtemp.sh

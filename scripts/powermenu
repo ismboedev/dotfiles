@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-ZEILEN=$( (echo "shutdown"; echo "reboot"; echo "suspend"; echo "hibernate"; echo "hybrid-sleep"; echo "lock") | rofi -dmenu -p "POWERMENU" )
+ZEILEN=$( (echo "shutdown"; echo "reboot"; echo "suspend"; echo "hibernate"; echo "hybrid-sleep"; echo "lock") | rofi -dmenu -theme royal-sky -p "POWERMENU" )
 
 if [ x"shutdown" = x"${ZEILEN}" ]
 then

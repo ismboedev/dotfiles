@@ -1,0 +1,26 @@
+#!/bin/zsh
+
+echo "Backup current mirrorlist..."
+cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+echo "    done"
+
+
+echo "copy updated mirrorlist from mirrorlist.pacnew to mirrorlist file"
+cp /etc/pacman.d/mirrorlist.pacnew /etc/pacman.d/mirrorlist
+echo "    done"
+
+
+echo "edit mirrorlist now, then save and exit"
+sleep 2
+vim /etc/pacman.d/mirrorlist
+
+echo "ranking mirrors..."
+rankmirrors /etc/pacman.d/mirrorlist >> /etc/pacman.d/mirrorlist.rankmirrors
+echo "    done"
+
+echo "copy ranked mirrors to mirrorlist..."
+cp /etc/pacman.d/mirrorlist.rankmirrors /etc/pacman.d/mirrorlist
+
+rm /etc/pacman.d/mirrorlist.rankmirrors
+
+echo "done"
