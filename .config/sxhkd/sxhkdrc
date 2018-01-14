@@ -71,6 +71,15 @@ super + y
 super + g
 	bspc node -s biggest
 
+# move Desktop to next Monitor
+super + {_,shift + }{Left,Right}
+	desk='bspc query -D -d focused'; \
+	bspc desktop -m {prev,next}; \
+	bspc monitor -f {prev,next}; \
+	bspc desktop -f $desk
+
+
+
 #
 # state/flags
 #

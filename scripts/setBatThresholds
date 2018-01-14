@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+sudo tpacpi-bat -v -s startThreshold 0 40 &
+sudo tpacpi-bat -v -s stopThreshold 0 80

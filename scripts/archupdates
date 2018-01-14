@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-sleep 2
+sleep 3 &&
 #zsh -c 'echo "  checkupdates"; checkupdates; zsh -i'
 #zsh -c 'echo "   checkupdates"; checkupdates; zsh -i'
 zsh -c 'echo "   checkupdates"; checkupdates; zsh -i'

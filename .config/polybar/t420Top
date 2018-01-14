@@ -54,7 +54,7 @@ font-2 = fontawesome:pixelsize=10;1
 
 modules-left = bspwm volume
 modules-center = xwindow
-modules-right = xbacklight filesystem cpu memory battery temperature date cal powermenu
+modules-right = xbacklight filesystem cpu memory battery temperature date cal
 
 tray-position = right
 tray-padding = 1

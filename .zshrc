@@ -36,7 +36,7 @@ alias df='df -h'
 alias grep='grep --color=auto'
 
 # show sizes in MB
-alias free='free -m'
+alias free='free -h'
 
 # change to master theseis directory
 alias master='cd /home/ismboe/Google\ Drive/Physik/MasterArbeit && exa -la --git'
@@ -50,10 +50,16 @@ alias meinmerge='gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=finished
 alias mycpufreq='sudo cpupower frequency-set -u'
 
 alias vpnRUB='sudo openvpn /etc/openvpn/client/OpenVPN-RUB.ovpn'
+#alias vpnRUB='sudo openvpn /etc/openvpn/client/RUBvpn_TCP.ovpn'
 
 alias alert='notify-send 'ALERT' "$(date +%F%n%T)" -u critical & cvlc /home/ismboe/Musik/02_E1M1.flac'
 
 alias ipinfo='curl ipinfo.io'
 
+alias yt='cd /home/ismboe/Downloads/vidtemp/ && youtube-dl -c -f 136+140'
+
+alias run='make run'
+
+alias sdltut='cd ~/Dokumente/TEMP/sdl_tutorial/SDL_tutorial/'
 
 #export TERM="xterm-256color"

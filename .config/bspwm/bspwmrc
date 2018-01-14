@@ -49,7 +49,7 @@ xrandr -q | grep -v disconnected | grep -v LVDS1 | grep connected
 if [ $? -eq 0 ]; then
 	# another monitor is connected
 	multimon=0
-	vga1_samsung_right.sh
+	vga1_dell_left.sh
 else
 	multimon=1
 fi
@@ -57,8 +57,8 @@ fi
 #multimon=1
 
 if [ $multimon -eq 0 ];then
-	bspc monitor LVDS1 -d $ws1 $ws2 $ws3 $ws4 $ws5 
-	bspc monitor VGA1 -d $ws6 $ws7 $ws8 $ws9 $ws10
+	bspc monitor LVDS1 -d $ws6 $ws7 $ws8 $ws9 $ws10
+	bspc monitor VGA1 -d $ws1 $ws2 $ws3 $ws4 $ws5 
 else
 	bspc monitor -d $ws1 $ws2 $ws3 $ws4 $ws5 $ws6 $ws7 $ws8 $ws9 $ws10
 fi
@@ -77,8 +77,9 @@ bspc rule -a Wine desktop=^9
 bspc rule -a MPlayer state=floating
 bspc rule -a Vlc state=floating follow=on
 bspc rule -a TelegramDesktop desktop=^8 state=floating
-bspc rule -a VirtualBox desktop=^7 state=floating
-bspc rule -a Zathura state=tiling
+#bspc rule -a VirtualBox desktop=^7 state=floating
+bspc rule -a Zathura state=tiled
+bspc rule -a Surf state=tiled
 
 
 # applications and services to start

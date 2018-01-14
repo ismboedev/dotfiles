@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+echo "start: " & sudo tpacpi-bat -v -g ST 1
+
+echo "stop: " & sudo tpacpi-bat -v -g SP 1

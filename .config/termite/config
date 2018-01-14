@@ -64,7 +64,7 @@ filter_unmatched_urls = true
 
 # Molokai theme
 [colors]
-background = rgba(16, 16, 16, 0.9)
+background = rgba(16, 16, 16, 0.85)
 #background= #101010
 foreground= #d0d0d0
 #foreground= #66ff66

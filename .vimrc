@@ -11,7 +11,7 @@ Plug 'Townk/vim-autoclose'
 Plug 'ervandew/supertab'
 Plug 'Rip-Rip/clang_complete' 
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'OmniCppComplete'
+"Plug 'OmniCppComplete'
 Plug 'vim-scripts/taglist.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
@@ -108,6 +108,8 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" force sudo on write
+cmap w!! w !sudo tee > /dev/null %
 
 set number
 set cursorline

@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+cd /home/ismboe/.minecraft/
+java -Xmx6G -Xms6G -jar forge-1.10.2-12.18.3.2477-universal.jar nogui

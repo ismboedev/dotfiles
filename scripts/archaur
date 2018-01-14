@@ -1,4 +1,4 @@
 #!/bin/zsh
 
-sleep 2
+sleep 3 &&
 zsh -c 'echo "   pacaur -k"; pacaur -k; zsh -i'

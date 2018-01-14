@@ -5,5 +5,7 @@ lxpolkit &
 nm-applet &
 insync start &
 archinfo &
-bluetooth off &
+#bluetooth off &
+/usr/lib/kdeconnectd &
+indicator-kdeconnect &
 #Telegram &
