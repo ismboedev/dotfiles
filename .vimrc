@@ -3,12 +3,10 @@
 call plug#begin('~/.vim/plugged')
 Plug 'vim-latex/vim-latex'
 "Plug 'xuhdev/vim-latex-live-preview'
-"Plug 'msanders/snipmate.vim'
+"Plug 'lervag/vimtex'
 Plug 'Townk/vim-autoclose'
-"Plug 'Valloric/YouCompleteMe'
-"Plug 'davidhalter/jedi-vim'
-"Plug 'klen/python-mode'
 Plug 'ervandew/supertab'
+"
 Plug 'Rip-Rip/clang_complete' 
 Plug 'octol/vim-cpp-enhanced-highlight'
 "Plug 'OmniCppComplete'
@@ -23,6 +21,7 @@ Plug 'itchyny/lightline.vim'
 "Plug 'tpope/vim-fugitive'
 Plug 'Yggdroot/indentLine'
 "Plug 'scrooloose/syntastic'
+Plug 'baskerville/vim-sxhkdrc'
 call plug#end()
 
 syntax enable
@@ -37,6 +36,7 @@ filetype indent on
 
 
 let g:tex_flavor='latex'
+let g:Tex_GotoError=0
 
 " dont hide math Dollar signs...
 let g:tex_conceal='ag'
@@ -46,9 +46,8 @@ let g:Tex_CompileRule_pdf = 'pdflatex -interactions=nonstopmode $*'
 let g:Tex_DefaultTargetFormat = 'pdf'
 let g:Tex_MultipleCompileFormats='pdf'
 let g:Tex_ViewRule_pdf = 'zathura'
-let g:livepreview_previewer = 'zathura'
+"let g:livepreview_previewer = 'zathura'
 "let theuniqueserv = expand("%:r")
-"let g:Tex_ViewRuleComplete_pdf = 'zathura -x "vim --servername '.theuniqueserv.' --remote +\%{line} \%{input}" $*.pdf 2>/dev/nul &'
 
 "schnelles speichern und kompilieren, und position in pdf anzeigen. zathura muss aber
 "vorher geöffnet worden sein. Nur bei Latex files
@@ -92,13 +91,10 @@ let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ }
 
-"supertab
+""supertab
 let g:SuperTabClosePreviewOnPopupClose=1
 let g:SuperTabDefaultCompletionType = "context"
 
-"YouCompleteMe
-"let g:ycm_min_num_of_chars_for_completion = 1
-"let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 
 
 "navigation in split windows
@@ -127,3 +123,4 @@ set tw=79
 set formatoptions+=l
 set colorcolumn=80
 set so=5
+set tabpagemax=30

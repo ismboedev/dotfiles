@@ -4,8 +4,10 @@ sleep 1
 lxpolkit &
 nm-applet &
 insync start &
+#owncloud &
 archinfo &
 #bluetooth off &
 /usr/lib/kdeconnectd &
+sleep 1s &
 indicator-kdeconnect &
 #Telegram &

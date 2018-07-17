@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+vga1_dell_left.sh
+
+setbg
+layoutDE
+
+bspc monitor VGA1 -d 1 2 3 4 5 6 7
+bspc monitor LVDS1 -d 8 9 10
+
+launchpolybar

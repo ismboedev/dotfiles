@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+pcmanfm "smb://afp2" "/home/ismboe/Google Drive/Physik/MasterArbeit"

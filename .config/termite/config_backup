@@ -7,7 +7,7 @@ allow_bold = true
 dynamic_title = true
 urgent_on_bell = true
 clickable_url = true
-font = iosevka term 10
+font = Hack 9
 scrollback_lines = 10000
 search_wrap = true
 #icon_name = terminal
@@ -63,70 +63,31 @@ filter_unmatched_urls = true
 
 
 # Molokai theme
-#[colors]
-#background = rgba(16, 16, 16, 0.85)
-##background= #101010
-#foreground= #d0d0d0
-##foreground= #66ff66
-##highlight = #505050
-#cursor = #1793D1
-#color0= #101010
-#color1= #960050
-#color2= #66aa11
-#color3= #c47f2c
-#color4= #30309b
-#color5= #7e40a5
-#color6= #3579a8
-#color7= #9999aa
-#color8= #303030
-#color9= #ff0090
-#color10= #80ff00
-#color11= #ffba68
-#color12= #5f5fee
-#color13= #bb88dd
-#color14= #4eb4fa
-#color15= #d0d0d0
-
 [colors]
+background = rgba(16, 16, 16, 0.85)
+#background= #101010
+foreground= #d0d0d0
+#foreground= #66ff66
+#highlight = #505050
+cursor = #1793D1
+color0= #101010
+color1= #960050
+color2= #66aa11
+color3= #c47f2c
+color4= #30309b
+color5= #7e40a5
+color6= #3579a8
+color7= #9999aa
+color8= #303030
+color9= #ff0090
+color10= #80ff00
+color11= #ffba68
+color12= #5f5fee
+color13= #bb88dd
+color14= #4eb4fa
+color15= #d0d0d0
 
-# special
-foreground      = #f8f8f2
-foreground_bold = #f8f8f2
-cursor          = #f8f8f2
-#background      = #282a36
-background      = rgba(40, 42, 54, 0.84)
 
-# black
-color0  = #000000
-color8  = #4d4d4d
-
-# red
-color1  = #ff5555
-color9  = #ff6e67
-
-# green
-color2  = #50fa7b
-color10 = #5af78e
-
-# yellow
-color3  = #f1fa8c
-color11 = #f4f99d
-
-# blue
-color4  = #bd93f9
-color12 = #caa9fa
-
-# magenta
-color5  = #ff79c6
-color13 = #ff92d0
-
-# cyan
-color6  = #8be9fd
-color14 = #9aedfe
-
-# white
-color7  = #bfbfbf
-color15 = #e6e6e6
 
 [hints]
 #font = Monospace 12

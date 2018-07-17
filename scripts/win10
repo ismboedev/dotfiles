@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+/usr/lib/virtualbox/VirtualBox --comment "win10" --startvm "42145270-149f-4d71-9b21-d6173db09bd1"

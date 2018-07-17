@@ -72,11 +72,11 @@ super + g
 	bspc node -s biggest
 
 # move Desktop to next Monitor
-super + {_,shift + }{Left,Right}
-	desk='bspc query -D -d focused'; \
-	bspc desktop -m {prev,next}; \
-	bspc monitor -f {prev,next}; \
-	bspc desktop -f $desk
+#super + {_,shift + }{Left,Right}
+#	desk='bspc query -D -d focused'; \
+#	bspc desktop -m {prev,next}; \
+#	bspc monitor -f {prev,next}; \
+#	bspc desktop -f $desk
 
 
 
@@ -124,8 +124,20 @@ super + {o,i}
 	bspc wm -h on
 
 # focus or send to the given desktop
-super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+#super + {_,shift + }{1-9,0}
+	#bspc {desktop -f,node -d} '^{1-9,10}'
+	#bspc {desktop -f,node -d} {1,2,3,4,5,6,7,8,9,10}
+
+
+super + {_,shift + ,alt + }{1-9,0}
+  { bspc desktop --focus \
+  , bspc node --to-desktop \
+  , bspc desktop --swap \
+  } {1,2,3,4,5,6,7,8,9,10}
+
+
+
+
 
 #
 # preselect

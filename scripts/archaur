@@ -1,4 +1,4 @@
 #!/bin/zsh
 
 sleep 3 &&
-zsh -c 'echo "   pacaur -k"; pacaur -k; zsh -i'
+zsh -c 'echo "   yay -Qua"; yay -Qua; zsh -i'
