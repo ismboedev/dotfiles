@@ -1,4 +1,18 @@
 #!/bin/sh
 
-bspc monitor LVDS1 -d 1 2 3 4 5
-bspc monitor VGA1 -d 6 7 8 9 10
+ws1=1
+ws2=2
+ws3=3
+ws4=4
+ws5=5
+ws6=6
+ws7=7
+ws8=8
+ws9=9
+ws10=10
+
+
+bspc monitor VGA1 -d $ws1 $ws2 $ws3 $ws4 $ws5 $ws6 $ws7
+bspc monitor LVDS1 -d $ws8 $ws9 $ws10
+
+launchpolybar

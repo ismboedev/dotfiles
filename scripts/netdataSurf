@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+surf localhost:19999

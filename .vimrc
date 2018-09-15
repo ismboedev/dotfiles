@@ -42,7 +42,8 @@ let g:Tex_GotoError=0
 let g:tex_conceal='ag'
 
 "let g:Tex_CompileRule_pdf = 'pdflatex --synctex=1 -interactions=nonstopmode $*'
-let g:Tex_CompileRule_pdf = 'pdflatex -interactions=nonstopmode $*'
+"let g:Tex_CompileRule_pdf = 'pdflatex -interactions=nonstopmode $*'
+let g:Tex_CompileRule_pdf = 'pdflatex $*'
 let g:Tex_DefaultTargetFormat = 'pdf'
 let g:Tex_MultipleCompileFormats='pdf'
 let g:Tex_ViewRule_pdf = 'zathura'
@@ -54,6 +55,9 @@ let g:Tex_ViewRule_pdf = 'zathura'
 autocmd BufNewFile,BufRead *.tex nmap <F2> <ESC>:w<Return><leader>ll<leader>ls
 autocmd BufNewFile,BufRead *.tex imap <F2> <ESC>:w<Return><leader>ll<leader>ls
 
+
+" toggle spellchek
+map <F4> :setlocal spell! spelllang=de_de<Return>
 
 
 " Python Mode

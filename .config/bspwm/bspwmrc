@@ -49,8 +49,8 @@ xrandr -q | grep -v disconnected | grep -v LVDS1 | grep connected
 if [ $? -eq 0 ]; then
 	# another monitor is connected
 	multimon=0
-	#vga1_dell_left.sh
-	vga1_samsung_right.sh
+	vga1_dell_left.sh
+#	vga1_samsung_right.sh
 else
 	multimon=1
 fi
